@@ -12,19 +12,15 @@ import adminRoutes from '@/routes/adminRoutes';
 export const app = express();
 
 
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://dummy-frontend-plum.vercel.app/home',
-  'https://your-custom-domain.com'
-];
-
 app.use(cors({
   origin: [
-    'http://localhost:3000',                      // Local frontend
-    'https://dummy-frontend-plum.vercel.app/home',       // Your Vercel frontend link
-    'https://your-custom-domain.com'              // Any other domains
+    'http://localhost:3000',                      // Local frontend for testing
+    'https://dummy-frontend-plum.vercel.app',     // Your Vercel Frontend (NO trailing slash)
+    'https://dummy-frontend-plum.vercel.app/'     // Sometimes browsers send the slash, safe to add both
   ],
-  credentials: true,
+  credentials: true, // This allows cookies/sessions to work
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json({ limit: '50mb' }));
