@@ -12,6 +12,11 @@ import adminRoutes from '@/routes/adminRoutes';
 export const app = express();
 
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://dummy-frontend-plum.vercel.app/home',
+  'https://your-custom-domain.com'
+];
 
 app.use(cors({
   origin: [
