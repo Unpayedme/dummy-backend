@@ -11,6 +11,12 @@ import adminRoutes from '@/routes/adminRoutes';
 
 export const app = express();
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://your-project.vercel.app',
+  'https://your-custom-domain.com'
+];
+
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true,
